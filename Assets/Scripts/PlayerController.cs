@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour {
         m_Rigidbody.AddForce(movement * speed);
 #endif
 #if UNITY_ANDROID
-        float horizontal = Input.acceleration.y;
-        float vertical = Input.acceleration.x;
+        float horizontal = Input.acceleration.x;
+        float vertical = Input.acceleration.y;
         Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
         m_Rigidbody.AddForce(movement * speed);
 #endif
