@@ -22,10 +22,12 @@ public class PlayerController : MonoBehaviour {
 
     private void Update()
     {
+#if UNITY_STANDALONE
         if(Input.GetKeyDown("escape"))
         {
             Application.Quit();
         }
+#endif
     }
 
     // Update is called once per frame
@@ -39,9 +41,7 @@ public class PlayerController : MonoBehaviour {
 #endif
 #if UNITY_ANDROID
         float horizontal = Input.acceleration.x;
-        Debug.Log("x= " + horizontal);
         float vertical = Input.acceleration.y;
-        Debug.Log("y= " + hvertical);
         Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
         m_Rigidbody.AddForce(movement * speed);
 #endif
@@ -71,4 +71,5 @@ public class PlayerController : MonoBehaviour {
             m_WinText.gameObject.SetActive(true);
         }
     }
+
 }
