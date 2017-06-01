@@ -31,13 +31,20 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
+#if UNITY_STANDALONE
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
         Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
-
         m_Rigidbody.AddForce(movement * speed);
-    }
+#endif
+#if UNITY_ANDROID
+        float horizontal = Input.acceleration.y;
+        float vertical = Input.acceleration.x;
+        Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
+        m_Rigidbody.AddForce(movement * speed);
+#endif
+        }
+
 
     private void OnTriggerEnter(Collider other)
     {
