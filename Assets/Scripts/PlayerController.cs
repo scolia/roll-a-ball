@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public Text m_CountText;
     public Text m_WinText;
     public GameObject PickUps;
+    public Button m_ResetButton;
 
     private Rigidbody m_Rigidbody;
     private int m_Count = 0;
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour {
             m_Count++;
             SetCountText();
             DisplayWinText();
+            HighlightResetButton();
         }
     }
 
@@ -70,6 +72,14 @@ public class PlayerController : MonoBehaviour {
         {
             m_WinText.gameObject.SetActive(true);
         }
+    }
+
+    void HighlightResetButton()
+    {
+        if (m_Count >= m_PickUpNums)
+        {
+            m_ResetButton.Select();
+        }   
     }
 
 }
